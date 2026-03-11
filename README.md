@@ -99,7 +99,6 @@ Access the admin dashboard at `/dashboard` (or the configured admin path).
 ## 🤝 Support
 
 For any inquiries or technical support, please reach out via:
-- **WhatsApp**: [Chat With Us](https://wa.me/923156347304)
 - **Instagram**: [dream.devx](https://www.instagram.com/dream.devx?igsh=ZDdsOXM2emMyM2Ux)
 
 ---

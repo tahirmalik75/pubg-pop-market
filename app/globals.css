@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide Next.js Dev "N" Icon and Overlays */
+#nextjs-portal,
+[data-nextjs-portal],
+[data-nextjs-toast],
+.__next-build-watcher {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}

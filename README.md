@@ -5,7 +5,11 @@
 A premium, high-performance marketplace platform for PUBG Popularity packages. Built with cutting-edge technologies to provide a seamless buying experience and a powerful administrative control center.
 
 ---
+## 🌐 Live Demo
 
+**Website:** [https://pubg-pop-market.vercel.app](https://pubg-pop-market.vercel.app)
+
+- Admin: `admin` / `tahir123`
 ## ✨ Features
 
 ### 💎 User Experience

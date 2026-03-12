@@ -4,8 +4,7 @@ import Order from '@/models/Order';
 import Card from '@/models/Card';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
-import { writeFile, mkdir } from 'fs/promises';
-import { join } from 'path';
+import { uploadToCloudinary } from '@/lib/cloudinary';
 
 export async function GET() {
     try {
@@ -45,23 +44,12 @@ export async function POST(req: Request) {
 
         await connectDB();
 
-        // Save image to public/uploads/orders
+        // Upload payment proof to Cloudinary
         const bytes = await file.arrayBuffer();
         const buffer = Buffer.from(bytes);
-
-        const uploadDir = join(process.cwd(), 'public', 'uploads', 'orders');
-
-        try {
-            await mkdir(uploadDir, { recursive: true });
-        } catch (e) { }
-
-        const timestamp = Date.now();
-        const extension = file.name.split('.').pop() || 'jpg';
-        const filename = `order_${session.user.id}_${timestamp}.${extension}`;
-        const filePath = join(uploadDir, filename);
-
-        await writeFile(filePath, buffer);
-        const publicPath = `/uploads/orders/${filename}`;
+        
+        const uploadResult: any = await uploadToCloudinary(buffer, 'payment_proofs');
+        const cloudinaryUrl = uploadResult.secure_url;
 
         const order = await Order.create({
             userId: session.user.id,
@@ -69,7 +57,7 @@ export async function POST(req: Request) {
             amount: parseFloat(amount),
             quantity: parseInt(quantity) || 1,
             transactionId,
-            paymentProof: publicPath,
+            paymentProof: cloudinaryUrl,
             status: 'pending',
         });
 

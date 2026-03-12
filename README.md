@@ -9,7 +9,7 @@ A premium, high-performance marketplace platform for PUBG Popularity packages. B
 
 **Website:** [https://pubg-pop-market.vercel.app](https://pubg-pop-market.vercel.app)
 
-- Admin: `admin` / `tahir123`
+
 ## ✨ Features
 
 ### 💎 User Experience
